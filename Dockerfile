@@ -7,6 +7,9 @@ RUN npm install
 
 COPY . .
 
+# Make start script executable
+RUN chmod +x start.sh
+
 EXPOSE 3000
 
-CMD ["npm", "start"]
+CMD ["./start.sh"]
