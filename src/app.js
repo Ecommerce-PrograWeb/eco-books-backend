@@ -7,9 +7,23 @@ import { errorHandler } from "./core/errors/error-handler.js";
 
 const app = express();
 
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  "http://localhost:3001",
+  "http://localhost:3000",
+  "http://infrae-front-tbl2mpk59djj-99150187.us-east-2.elb.amazonaws.com"
+].filter(Boolean);
+
 app.use(
   cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:3001",
+    origin: (origin, callback) => {
+      // Permitir requests sin origin (como Postman) o los origins en la lista
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
     credentials: true,
   })
 );
