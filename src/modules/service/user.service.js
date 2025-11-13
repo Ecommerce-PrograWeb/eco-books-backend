@@ -1,7 +1,7 @@
 // src/modules/users/user.service.js  
 import { sequelize } from "../../config/database.js";
 
-const USER_FIELDS_PUBLIC = "u.user_id, u.name, u.email, r.type AS role";
+const USER_FIELDS_PUBLIC = "u.user_id, u.name, u.email,u.state, r.type AS role";
 
 /** Helper: obtener role_id por nombre */
 export async function findRoleIdByType(type) {

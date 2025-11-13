@@ -10,6 +10,7 @@ router.post("/", controller.createUser);
 router.put("/:id", controller.updateUser);
 router.delete("/:id", controller.deleteUser);
 router.post("/:id/restore", controller.restoreUser);
+router.get("/:id/state", controller.getUserState);
 
 // Nota: Los endpoints de autenticación (login, register, logout) están en /auth
 
