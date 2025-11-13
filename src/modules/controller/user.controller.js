@@ -26,11 +26,11 @@ export const getUserById = async (req, res, next) => {
 /** POST /users */
 export const createUser = async (req, res, next) => {
   try {
-    const { name, email, password, role, role_id } = req.body || {};
+    const { name, email, password, role, role_id, state } = req.body || {};
     if (!name || !email || !password) {
       return res.status(400).json({ message: "name, email y password son requeridos" });
     }
-    const newUser = await userService.createUser({ name, email, password, role, role_id });
+    const newUser = await userService.createUser({ name, email, password, role, role_id, state });
     res.status(201).json(newUser);
   } catch (err) {
     // si el service lanza errores de validación (email duplicado, etc.)
