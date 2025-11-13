@@ -12,7 +12,8 @@ module.exports = {
         created_date: { type: Sequelize.DATE, allowNull: false, defaultValue: Sequelize.literal('CURRENT_TIMESTAMP') },
         updated_date: { type: Sequelize.DATE, allowNull: true },
         deleted_date: { type: Sequelize.DATE, allowNull: true },
-        created_by: { type: Sequelize.INTEGER, allowNull: true } 
+        created_by: { type: Sequelize.INTEGER, allowNull: true }, 
+        state: { type: Sequelize.BOOLEAN, allowNull: true, defaultValue: true }
       }, { transaction: t });
 
       await qi.addConstraint('User', {
