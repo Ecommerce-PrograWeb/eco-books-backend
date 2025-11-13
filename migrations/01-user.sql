@@ -23,7 +23,8 @@ create table IF NOT EXISTS User(
     updated_date datetime null on update current_timestamp,
     deleted_date datetime  null,
     created_by int,
-    Foreign key (created_by) references User(user_id)
+    Foreign key (created_by) references User(user_id),
+    state bit;
 );
 
 /*
